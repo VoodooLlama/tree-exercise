@@ -1,0 +1,26 @@
+$thumbnail-small: 50px;
+$thumbnail-medium: 100px;
+$thumbnail-large: 150px;
+$thumbnail-sizes: (
+	small: $thumbnail-small,
+	medium: $thumbnail-medium,
+	large: $thumbnail-large
+);
+
+@mixin thumbnail-sizes() {
+	@each $size, $size-value in $thumbnail-sizes {
+		// match .$class.$size
+		&.#{$size} {
+			// set height/width to $thumbnail-$size
+			height: $size-value;
+			width: $size-value;
+		}
+	}
+}
+
+.thumbnail {
+	border-radius: 3px;
+
+	@include thumbnail-sizes();
+}
+
